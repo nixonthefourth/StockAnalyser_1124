@@ -12,6 +12,7 @@ namespace StockAnalyser
             
             // Ascending Order Sort
             _sortAlgorithms.InsertionSortAsc(testArray);
+            _sortAlgorithms.InsertionSortDesc(testArray);
         }
     }
 }
