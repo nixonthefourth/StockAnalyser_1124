@@ -9,7 +9,7 @@ namespace StockAnalyser
          */
         
         // Ascending Order
-        public void InsertionSortAsc(int[] array)
+        public int[] InsertionSortAsc(int[] array)
         {
             // Checks Whether The Array Is Empty
             if (array.Length != 0)
@@ -34,14 +34,14 @@ namespace StockAnalyser
                     // Move Key To A New Position
                     array[index + 1] = key;
                 }
-            
-                // Display The Sorted Array
-                Visuals.DisplayMessage(string.Join(", ", array));
             }
+            
+            // Return The Array
+            return array;
         }
         
         // Descending Order
-        public void InsertionSortDesc(int[] array)
+        public int[] InsertionSortDesc(int[] array)
         {
             // Checks Whether The Array Is Empty
             if (array.Length != 0)
@@ -66,10 +66,10 @@ namespace StockAnalyser
                     // Move Key To A New Position
                     array[index + 1] = key;
                 }
-            
-                // Display The Sorted Array
-                Visuals.DisplayMessage(string.Join(", ", array));
             }
+            
+            // Return The Array
+            return array;
         }
     }
 }

@@ -4,6 +4,7 @@ namespace StockAnalyser
     {
         // Create Objects
         Sort _sortAlgorithms = new Sort();
+        Search _searchAlgorithms = new Search();
 
         // Main Loop
         public void ProgramLoop()
@@ -12,20 +13,21 @@ namespace StockAnalyser
             
             // Sort 256 Shares
             // Share 1
-            Visuals.DisplayMessage("First 256 Blue Chip Share \n");
-            _sortAlgorithms.InsertionSortAsc(FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Stocks/Share_1_256.txt"));
+            Visuals.DisplayMessage("Sort | First 256 Blue Chip Share \n".ToUpper());
+            
+            int[] sortedArray = _sortAlgorithms.InsertionSortAsc(FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Stocks/Share_1_256.txt"));
+            
+            Visuals.DisplayMessage(string.Join(" | ", sortedArray));
             Console.WriteLine("\n \n");
             
-            // Share 2
-            Visuals.DisplayMessage("Second 256 Blue Chip Share \n");
-            _sortAlgorithms.InsertionSortAsc(FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Stocks/Share_2_256.txt"));
-            Console.WriteLine("\n \n");
+            // Test Searching
+            Visuals.DisplayMessage("Search | First 256 Blue Chip Share \n".ToUpper());
 
-            // Share 3
-            Visuals.DisplayMessage("Third 256 Blue Chip Share \n");
-            _sortAlgorithms.InsertionSortAsc(FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Stocks/Share_3_256.txt"));
-            Console.WriteLine("\n \n");
-
+            // Retrieve The Value From User
+            int searchedValue = _searchAlgorithms.GetValue();
+            
+            // Actually Search For It
+            int value = _searchAlgorithms.BinarySearch(sortedArray, 0, sortedArray.Length, searchedValue);
         }
         
         // .txt File Retrieval
