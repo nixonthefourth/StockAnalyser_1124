@@ -2,50 +2,46 @@ namespace StockAnalyser
 {
     public class Solution
     {
-        // Create Objects
+        /// <summary>
+        /// Creating objects in order to access the methods and related data.
+        /// </summary>
         Sort _sortAlgorithms = new Sort();
         Search _searchAlgorithms = new Search();
 
-        // Main Loop
         public void ProgramLoop()
         {
-            // Display Sorted Share Data
             
-            // Sort 256 Shares
-            // Share 1
-            Visuals.DisplayMessage("Sort | First 256 Blue Chip Share \n".ToUpper());
-            
-            int[] sortedArray = _sortAlgorithms.InsertionSortAsc(FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Stocks/Share_1_256.txt"));
-            
-            Visuals.DisplayMessage(string.Join(" | ", sortedArray));
-            Console.WriteLine("\n \n");
-            
-            // Test Searching
-            Visuals.DisplayMessage("Search | First 256 Blue Chip Share \n".ToUpper());
-
-            // Retrieve The Value From User
-            int searchedValue = _searchAlgorithms.GetValue();
-            
-            // Actually Search For It
-            int value = _searchAlgorithms.BinarySearch(sortedArray, 0, sortedArray.Length, searchedValue);
         }
         
-        // .txt File Retrieval
+        /// <summary>
+        /// Retrieves the data from the .txt files.
+        /// </summary>
+        /// 
+        /// <param name="path">
+        /// Stores the path to the file in a string.
+        /// </param>
+        /// 
+        /// <returns>
+        /// Returns the array with the values from the .txt files.
+        /// </returns>
+        /// 
+        /// <remarks>
+        /// First, the program passes string path to the required file.
+        /// Then, ReadAllLines()path reads all of the data in the file into an array of strings.
+        /// Another array of integers is created based on the length of the string array.
+        /// For loop is applied in order to parse each value
+        /// from an array of strings into  unsorted the array of integers.
+        /// </remarks>
         private int[] FileGet(string path)
         {
-            // Retrieve File From A Path
             string[] lines = System.IO.File.ReadAllLines(path);
             int[] array = new int[lines.Length];
 
-            // Append Integer Array
             for (int i = 0; i < lines.Length; i++)
             {
-                // Converts String Into Int
-                // Also Allocates The File Location
                 array[i] = int.Parse(lines[i]);
             }
             
-            // Returns The Integer Array
             return array;
         }
     }

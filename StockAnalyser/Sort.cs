@@ -2,73 +2,99 @@ namespace StockAnalyser
 {
     public class Sort
     {
-        /*
-         * INSERTION SORT
-         * INSERTION SORT
-         * INSERTION SORT
-         */
-        
-        // Ascending Order
+        /// <summary>
+        /// Creating insertion sort in the ascending order.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// Array that needs to be sorted is passed down here.
+        /// </param>
+        /// 
+        /// <returns>
+        /// Returns a sorted array of integers.
+        /// </returns>
+        ///
+        /// <remarks>
+        /// First, array is checked on whether it is empty.
+        /// For loop is applied in order to sort the array itself, starting from the second index,
+        /// assuming that first element is sorted. Then loop terminates when i reaches the array's length.
+        ///
+        /// Keys and indices of the array are created and changed with each new iteration of the loop.
+        ///
+        ///
+        /// If the value is greater than key and search index in the first place is present in the array,
+        /// then while loop executes.
+        /// Indices are swapped and index is decremented, while counter still moves on.
+        /// Key in the array also moves forward to 1.
+        /// </remarks>
         public int[] InsertionSortAsc(int[] array)
         {
-            // Checks Whether The Array Is Empty
             if (array.Length != 0)
             {
                 for (int i = 1; i < array.Length; i++)
                 {
-                    // Creates The Key & Index
                     int key = array[i];
                     int index = i - 1;
-                
-                    // Moves The Elements Of The Array That Are Greater Than The 'key' To One Position Ahead
-                    // Also Ensures That The Array Isn't Empty
+                    
                     while (index >= 0 && array[index] > key)
                     {
-                        // Moves The Position Forward
                         array[index + 1] = array[index];
                     
-                        // Decrement Of The Index
                         index--;
                     }
                 
-                    // Move Key To A New Position
                     array[index + 1] = key;
                 }
             }
             
-            // Return The Array
             return array;
         }
         
-        // Descending Order
+        /// <summary>
+        /// Creating insertion sort in the descending order.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// Array that needs to be sorted is passed down here.
+        /// </param>
+        /// 
+        /// <returns>
+        /// Returns a sorted array of integers.
+        /// </returns>
+        ///
+        /// <remarks>
+        /// First, array is checked on whether it is empty.
+        /// For loop is applied in order to sort the array itself, starting from the second index,
+        /// assuming that first element is sorted. Then loop terminates when i reaches the array's length.
+        ///
+        /// Keys and indices of the array are created and changed with each new iteration of the loop.
+        ///
+        ///
+        /// If the value is less than key and search index in the first place is present in the array,
+        /// then while loop executes.
+        /// Indices are swapped and index is decremented, while counter still moves on.
+        /// Key in the array also moves forward to 1.
+        /// </remarks>
         public int[] InsertionSortDesc(int[] array)
         {
-            // Checks Whether The Array Is Empty
             if (array.Length != 0)
             {
                 for (int i = 1; i < array.Length; i++)
                 {
-                    // Creates The Key & Index
                     int key = array[i];
                     int index = i - 1;
                 
-                    // Moves The Elements Of The Array That Are Greater Than The 'key' To One Position Behind
-                    // Also Ensures That The Array Isn't Empty
                     while (index >= 0 && array[index] < key)
                     {
-                        // Moves The Position Forward
                         array[index + 1] = array[index];
                     
-                        // Decrement Of The Index
                         index--;
                     }
                 
-                    // Move Key To A New Position
                     array[index + 1] = key;
                 }
             }
             
-            // Return The Array
             return array;
         }
     }
