@@ -21,7 +21,6 @@ namespace StockAnalyser
         ///
         /// Keys and indices of the array are created and changed with each new iteration of the loop.
         ///
-        ///
         /// If the value is greater than key and search index in the first place is present in the array,
         /// then while loop executes.
         /// Indices are swapped and index is decremented, while counter still moves on.
@@ -69,7 +68,6 @@ namespace StockAnalyser
         ///
         /// Keys and indices of the array are created and changed with each new iteration of the loop.
         ///
-        ///
         /// If the value is less than key and search index in the first place is present in the array,
         /// then while loop executes.
         /// Indices are swapped and index is decremented, while counter still moves on.
@@ -96,6 +94,72 @@ namespace StockAnalyser
             }
             
             return array;
+        }
+
+        /// <summary>
+        /// Partitions the array into two halves based on a pivot element.
+        /// Elements smaller than or equal to the pivot are placed on the left,
+        /// and elements greater than the pivot are placed on the right.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// The array that will be partitioned.
+        /// </param>
+        /// <param name="low">
+        /// The starting index of the array range.
+        /// </param>
+        /// <param name="high">
+        /// The ending index of the array range, which is also the pivot index.
+        /// </param>
+        /// 
+        /// <returns>
+        /// The index position of the pivot after partitioning.
+        /// </returns>
+        private int Partition(int[] array, int low, int high)
+        {
+            int pivot = array[high];
+            int lowIndex = low - 1;
+
+            for (int i = low; i < high; i++)
+            {
+                if (array[i] <= pivot)
+                {
+                    lowIndex++;
+                    
+                    int tempVal0 = array[lowIndex];
+                    array[lowIndex] = array[i];
+                    array[i] = tempVal0;
+                }
+            }
+            
+            int tempVal1 = array[lowIndex + 1];
+            array[lowIndex + 1] = array[high];
+            array[high] = tempVal1;
+            
+            return lowIndex + 1;
+        }
+
+        /// <summary>
+        /// Performs the ascending recursive quick sort algorithm on the given array within the specified range.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// The array to be sorted.
+        /// </param>
+        /// <param name="low">
+        /// The starting index of the array's range.
+        /// </param>
+        /// <param name="high">
+        /// The ending index of the array's range.
+        /// </param>
+        public void QuickSort(int[] array, int low, int high)
+        {
+            if (array == null || array.Length == 0) return;
+            if (low >= high) return;
+
+            int pivot = Partition(array, low, high);
+            QuickSort(array, low, pivot - 1);
+            QuickSort(array, pivot + 1, high);
         }
     }
 }

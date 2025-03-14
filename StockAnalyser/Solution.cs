@@ -2,12 +2,6 @@ namespace StockAnalyser
 {
     public class Solution
     {
-        /// <summary>
-        /// Creating objects in order to access the methods and related data.
-        /// </summary>
-        Sort _sortAlgorithms = new Sort();
-        Search _searchAlgorithms = new Search();
-
         public void ProgramLoop()
         {
             
