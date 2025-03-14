@@ -15,7 +15,7 @@ namespace StockAnalyser
         /// </param>
         /// 
         /// <returns>
-        /// Returns index of 'value' if it's present in the 'array'.
+        /// Returns either the location of the found value, or -1, if there is no value.
         /// </returns>
         ///
         /// <remarks>
@@ -53,5 +53,37 @@ namespace StockAnalyser
             return -1;
         }
 
+        /// <summary>
+        /// Basic linear search algorithm.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// Array where we are going to search for the value.
+        /// </param>
+        /// 
+        /// <param name="value">
+        /// Searched value.
+        /// </param>
+        /// 
+        /// <returns>
+        /// Returns either the location of the found value, or -1, if there is no value.
+        /// </returns>
+        ///
+        /// <remarks>
+        /// Runs through the array and if the value associated with the array's pointer equals to the searched value,
+        /// we trigger a positive return.
+        ///
+        /// Otherwise, -1 is returned.
+        /// </remarks>
+        public int LinearSearch(int[] array, int value)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == value)
+                    return i;
+            }
+            
+            return -1;
+        }
     }
 }
