@@ -115,7 +115,7 @@ namespace StockAnalyser
         /// <returns>
         /// The index position of the pivot after partitioning.
         /// </returns>
-        private int Partition(int[] array, int low, int high)
+        private int PartitionAsc(int[] array, int low, int high)
         {
             int pivot = array[high];
             int lowIndex = low - 1;
@@ -152,14 +152,80 @@ namespace StockAnalyser
         /// <param name="high">
         /// The ending index of the array's range.
         /// </param>
-        public void QuickSort(int[] array, int low, int high)
+        public void QuickSortAsc(int[] array, int low, int high)
         {
             if (array == null || array.Length == 0) return;
             if (low >= high) return;
 
-            int pivot = Partition(array, low, high);
-            QuickSort(array, low, pivot - 1);
-            QuickSort(array, pivot + 1, high);
+            int pivot = PartitionAsc(array, low, high);
+            QuickSortAsc(array, low, pivot - 1);
+            QuickSortAsc(array, pivot + 1, high);
+        }
+        
+        /// <summary>
+        /// Partitions the array into two halves based on a pivot element.
+        /// Elements greater than or equal to the pivot are placed on the left,
+        /// and elements less than the pivot are placed on the right.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// The array that will be partitioned.
+        /// </param>
+        /// <param name="low">
+        /// The starting index of the array range.
+        /// </param>
+        /// <param name="high">
+        /// The ending index of the array range, which is also the pivot index.
+        /// </param>
+        /// 
+        /// <returns>
+        /// The index position of the pivot after partitioning.
+        /// </returns>
+        private int PartitionDesc(int[] array, int low, int high)
+        {
+            int pivot = array[high];
+            int lowIndex = low - 1;
+
+            for (int i = low; i < high; i++)
+            {
+                if (array[i] >= pivot)
+                {
+                    lowIndex++;
+                    
+                    int tempVal0 = array[lowIndex];
+                    array[lowIndex] = array[i];
+                    array[i] = tempVal0;
+                }
+            }
+            
+            int tempVal1 = array[lowIndex + 1];
+            array[lowIndex + 1] = array[high];
+            array[high] = tempVal1;
+            
+            return lowIndex + 1;
+        }
+
+        /// <summary>
+        /// Performs the descending recursive quick sort algorithm on the given array within the specified range.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// The array to be sorted.
+        /// </param>
+        /// <param name="low">
+        /// The starting index of the array's range.
+        /// </param>
+        /// <param name="high">
+        /// The ending index of the array's range.
+        /// </param>
+        public void QuickSortDesc(int[] array, int low, int high)
+        {
+            if (array == null || array.Length == 0) return;
+            if (low >= high) return;
+
+            int pivot = PartitionDesc(array, low, high);
+            QuickSortDesc(array, low, pivot - 1);
+            QuickSortDesc(array, pivot + 1, high);
         }
     }
 }
