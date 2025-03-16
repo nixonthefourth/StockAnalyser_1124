@@ -237,9 +237,22 @@ namespace StockAnalyser
         /// </param>
         ///
         /// <remarks>
-        /// Initialises variables for two loops that sort through the array as well as the flags.
+        /// Initialises variables for two loops that sort through the array as well as the flag.
+        ///
+        /// First loop is initialised in order to track the swapped elements.
+        /// If the two elements aren't swapped, we call it quits.
+        ///
+        /// Second loop is actually responsible for swapping.
+        /// If element 'a' is greater than 'a+1',
+        /// we store the current element in a temporary variable,
+        /// then assign current element to the '+ 1' position,
+        /// and then we assign temporarly variable to the '+ 1' position.
+        /// Flag is set to true.
+        ///
+        /// Loop is repeated until we break in the first loop, pretty much.
+        /// Nested loops make up the n^2 squared complexity.
         /// </remarks>
-        static void BubbleSortAsc(int[] array)
+        public void BubbleSortAsc(int[] array)
         {
             int i, j, temp;
             bool swapped;
@@ -272,9 +285,22 @@ namespace StockAnalyser
         /// </param>
         ///
         /// <remarks>
-        /// Initialises variables for two loops that sort through the array as well as the flags.
+        /// Initialises variables for two loops that sort through the array as well as the flag.
+        ///
+        /// First loop is initialised in order to track the swapped elements.
+        /// If the two elements aren't swapped, we call it quits.
+        ///
+        /// Second loop is actually responsible for swapping.
+        /// If element 'a' is less than 'a+1',
+        /// we store the current element in a temporary variable,
+        /// then assign current element to the '+ 1' position,
+        /// and then we assign temporarly variable to the '+ 1' position.
+        /// Flag is set to true.
+        ///
+        /// Loop is repeated until we break in the first loop, pretty much.
+        /// Nested loops make up the n^2 squared complexity.
         /// </remarks>
-        static void BubbleSortDesc(int[] array)
+        public void BubbleSortDesc(int[] array)
         {
             int i, j, temp;
             bool swapped;
