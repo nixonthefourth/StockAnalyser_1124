@@ -227,5 +227,75 @@ namespace StockAnalyser
             QuickSortDesc(array, low, pivot - 1);
             QuickSortDesc(array, pivot + 1, high);
         }
+
+        /// <summary>
+        /// Ascending Bubble Sort algorithm, that swaps the elements in the O(n^2) complexity.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// Array to be sorted.
+        /// </param>
+        ///
+        /// <remarks>
+        /// Initialises variables for two loops that sort through the array as well as the flags.
+        /// </remarks>
+        static void BubbleSortAsc(int[] array)
+        {
+            int i, j, temp;
+            bool swapped;
+            
+            for (i = 0; i < array.Length - 1; i++)
+            {
+                swapped = false;
+                for (j = 0; j < array.Length - i - 1; j++)
+                {
+                    if (array[j] > array[j + 1])
+                    {
+                        temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                        swapped = true;
+                    }
+                }
+                
+                if (swapped == false)
+                    break;
+            }
+        }
+        
+        /// <summary>
+        /// Descending Bubble Sort algorithm, that swaps the elements in the O(n^2) complexity.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// Array to be sorted.
+        /// </param>
+        ///
+        /// <remarks>
+        /// Initialises variables for two loops that sort through the array as well as the flags.
+        /// </remarks>
+        static void BubbleSortDesc(int[] array)
+        {
+            int i, j, temp;
+            bool swapped;
+            
+            for (i = 0; i < array.Length - 1; i++)
+            {
+                swapped = false;
+                for (j = 0; j < array.Length - i - 1; j++)
+                {
+                    if (array[j] < array[j + 1])
+                    {
+                        temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                        swapped = true;
+                    }
+                }
+                
+                if (swapped == false)
+                    break;
+            }
+        }
     }
 }
