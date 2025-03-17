@@ -4,7 +4,8 @@ namespace StockAnalyser
     {
         public static void ProgramLoop()
         {
-            
+            Menu programMenu = new Menu();
+            programMenu.ProgramMenuMain();
         }
         
         /// <summary>
@@ -26,7 +27,7 @@ namespace StockAnalyser
         /// For loop is applied in order to parse each value
         /// from an array of strings into  unsorted the array of integers.
         /// </remarks>
-        private int[] FileGet(string path)
+        public static int[] FileGet(string path)
         {
             string[] lines = System.IO.File.ReadAllLines(path);
             int[] array = new int[lines.Length];
@@ -38,5 +39,11 @@ namespace StockAnalyser
             
             return array;
         }
+        
+        /*
+         * TODO – Create display method
+         * TODO – Create unique path selection method
+         * TODO – Create method to merge files
+         */
     }
 }

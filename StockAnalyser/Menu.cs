@@ -3,6 +3,8 @@ namespace StockAnalyser
     public class Menu
     {
         private bool _arraySizeFlag;
+        private int[] _array;
+        
         /// <summary>
         /// Application menu that allows to navigate through the actions.
         /// </summary>
@@ -16,7 +18,7 @@ namespace StockAnalyser
         /// Option 2 allows to close the environment (aka quit).
         /// Another 'else' statement simply validates the action by the logical rules of implication.
         /// </remarks>
-        private void ProgramMenuMain()
+        public void ProgramMenuMain()
         {
             Console.Clear();
 
@@ -29,26 +31,23 @@ namespace StockAnalyser
             while (true)
             {
                 Visuals.DisplayMessage("\n Please enter the desired action from the list: ");
-                int menuAction = int.Parse(Console.ReadLine());
+                int menuActionLocal = int.Parse(Console.ReadLine());
 
-                if (menuAction == 1)
+                if (menuActionLocal == 1)
                 {
                     ProgramMenuArraySize();
                     break;
-                } else if (menuAction == 2) {
+                } else if (menuActionLocal == 2) {
                     Environment.Exit(0);
                 } else {
                     Visuals.DisplayMessage("\n Invalid action. Please try again.");
                 }
             }
         }
-            
+        
         /*
-         * TODO – Create stock index (1 'till 3 for borh 256 and 2048) selection
-         * TODO – Create display method
-         * TODO – Create unique path selector method
-         * TODO – Create method to merge files
          * TODO – Build in the merge method into the menu code
+         * TODO – Create search for each associated sort
         */
             
         /// <summary>
@@ -80,11 +79,63 @@ namespace StockAnalyser
                 if (menuAction == 1)
                 {
                     _arraySizeFlag = true;
+                    ProgramMenuStockSelect();
+                    ProgramMenuSort(_array);
+                    
                     break;
                 } else if (menuAction == 2) {
                     _arraySizeFlag = false;
+                    ProgramMenuStockSelect();
+                    ProgramMenuSort(_array);
+                    
                     break;
                 } else if (menuAction == 3) {
+                    break;
+                } else {
+                    Visuals.DisplayMessage("\n Invalid action. Please try again.");
+                }
+            }
+        }
+
+        private void ProgramMenuStockSelect()
+        {
+            Console.Clear();
+            
+            Visuals.DisplayMessage("\n \n Actions:");
+            Visuals.DisplayMessage("\n 1 | Stock 1");
+            Visuals.DisplayMessage("\n 2 | Stock 2");
+            Visuals.DisplayMessage("\n 3 | Stock 3");
+            Visuals.DisplayMessage("\n 4 | Merged Stock (Inactive)");
+
+            while (true)
+            {
+                Visuals.DisplayMessage("\n Please enter the desired action from the list: ");
+                int menuAction = int.Parse(Console.ReadLine());
+
+                if (menuAction == 1 && _arraySizeFlag)
+                {
+                    _array = Solution.FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_256.txt");
+                    
+                    break;
+                } else if (menuAction == 2 && _arraySizeFlag) {
+                    _array = Solution.FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_2_256.txt");
+                    
+                    break;
+                } else if (menuAction == 3 && _arraySizeFlag) {
+                    _array = Solution.FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_256.txt");
+                    
+                    break;
+                } else if (menuAction == 1 && !_arraySizeFlag) {
+                    _array = Solution.FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_2048.txt");
+                    
+                    break;
+                } else if (menuAction == 2 && !_arraySizeFlag) {
+                    _array = Solution.FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_2_2048.txt");
+                    
+                    break;
+                } else if (menuAction == 3 && !_arraySizeFlag) {
+                    _array = Solution.FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_2048.txt");
+                    
                     break;
                 } else {
                     Visuals.DisplayMessage("\n Invalid action. Please try again.");

@@ -21,13 +21,13 @@ namespace StockAnalyser
         {
             while (true)
             {
-                Visuals.DisplayMessage("\nEnter the searched number: ".ToUpper());
+                Visuals.DisplayMessage("\n Enter the searched number: ".ToUpper());
             
                 string value = Console.ReadLine();
                 
                 if (value.Length == 0 || value == " " || int.TryParse(value, out int result) == false)
                 {
-                    Visuals.DisplayMessage("\nWrong Input | Please enter a valid integer: ".ToUpper());
+                    Visuals.DisplayMessage("\n Wrong Input | Please enter a valid integer: ".ToUpper());
                 } else {
                     return int.Parse(value);
                     
