@@ -31,7 +31,7 @@ namespace StockAnalyser
         ///
         /// Then value of -1 is returned, if there is no actual value present.
         /// </remarks>
-        public int BinarySearch(int[] array, int value)
+        public static int BinarySearch(int[] array, int value)
         {
             int low = 0, high = array.Length - 1;
             
@@ -75,7 +75,7 @@ namespace StockAnalyser
         ///
         /// Otherwise, -1 is returned.
         /// </remarks>
-        public int LinearSearch(int[] array, int value)
+        public static int LinearSearch(int[] array, int value)
         {
             for (int i = 0; i < array.Length; i++)
             {
