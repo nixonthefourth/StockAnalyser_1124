@@ -2,7 +2,6 @@ namespace StockAnalyser
 {
     public class Solution
     {
-        Sort _sort = new Sort();
         private bool _arraySizeFlag;
         
         public void ProgramLoop()
@@ -169,9 +168,9 @@ namespace StockAnalyser
                 {
                     if (ProgramMenuAsc())
                     {
-                        _sort.InsertionSortAsc(array);
+                        Sort.InsertionSortAsc(array);
                     } else if (!ProgramMenuAsc()) {
-                        _sort.InsertionSortDesc(array);
+                        Sort.InsertionSortDesc(array);
                     }
                     
                     Console.WriteLine();
@@ -186,9 +185,9 @@ namespace StockAnalyser
                 } else if (menuAction == 2) {
                     if (ProgramMenuAsc())
                     {
-                        _sort.QuickSortAsc(array, 0, array.Length - 1);
+                        Sort.QuickSortAsc(array, 0, array.Length - 1);
                     } else if (!ProgramMenuAsc()) {
-                        _sort.QuickSortDesc(array, 0, array.Length - 1);
+                        Sort.QuickSortDesc(array, 0, array.Length - 1);
                     }
                     
                     Console.WriteLine();
@@ -203,9 +202,9 @@ namespace StockAnalyser
                 } else if (menuAction == 3) {
                     if (ProgramMenuAsc())
                     {
-                        _sort.BubbleSortAsc(array);
+                        Sort.BubbleSortAsc(array);
                     } else if (!ProgramMenuAsc()) {
-                        _sort.BubbleSortDesc(array);
+                        Sort.BubbleSortDesc(array);
                     }
                     
                     Console.WriteLine();

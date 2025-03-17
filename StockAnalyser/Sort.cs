@@ -26,7 +26,7 @@ namespace StockAnalyser
         /// Indices are swapped and index is decremented, while counter still moves on.
         /// Key in the array also moves forward to 1.
         /// </remarks>
-        public int[] InsertionSortAsc(int[] array)
+        public static int[] InsertionSortAsc(int[] array)
         {
             if (array.Length != 0)
             {
@@ -73,7 +73,7 @@ namespace StockAnalyser
         /// Indices are swapped and index is decremented, while counter still moves on.
         /// Key in the array also moves forward to 1.
         /// </remarks>
-        public int[] InsertionSortDesc(int[] array)
+        public static int[] InsertionSortDesc(int[] array)
         {
             if (array.Length != 0)
             {
@@ -115,7 +115,7 @@ namespace StockAnalyser
         /// <returns>
         /// The index position of the pivot after partitioning.
         /// </returns>
-        private int PartitionAsc(int[] array, int low, int high)
+        private static int PartitionAsc(int[] array, int low, int high)
         {
             int pivot = array[high];
             int lowIndex = low - 1;
@@ -152,7 +152,7 @@ namespace StockAnalyser
         /// <param name="high">
         /// The ending index of the array's range.
         /// </param>
-        public void QuickSortAsc(int[] array, int low, int high)
+        public static void QuickSortAsc(int[] array, int low, int high)
         {
             if (array == null || array.Length == 0) return;
             if (low >= high) return;
@@ -181,7 +181,7 @@ namespace StockAnalyser
         /// <returns>
         /// The index position of the pivot after partitioning.
         /// </returns>
-        private int PartitionDesc(int[] array, int low, int high)
+        private static int PartitionDesc(int[] array, int low, int high)
         {
             int pivot = array[high];
             int lowIndex = low - 1;
@@ -218,7 +218,7 @@ namespace StockAnalyser
         /// <param name="high">
         /// The ending index of the array's range.
         /// </param>
-        public void QuickSortDesc(int[] array, int low, int high)
+        public static void QuickSortDesc(int[] array, int low, int high)
         {
             if (array == null || array.Length == 0) return;
             if (low >= high) return;
@@ -252,7 +252,7 @@ namespace StockAnalyser
         /// Loop is repeated until we break in the first loop, pretty much.
         /// Nested loops make up the n^2 squared complexity.
         /// </remarks>
-        public void BubbleSortAsc(int[] array)
+        public static void BubbleSortAsc(int[] array)
         {
             int i, j, temp;
             bool swapped;
@@ -300,7 +300,7 @@ namespace StockAnalyser
         /// Loop is repeated until we break in the first loop, pretty much.
         /// Nested loops make up the n^2 squared complexity.
         /// </remarks>
-        public void BubbleSortDesc(int[] array)
+        public static void BubbleSortDesc(int[] array)
         {
             int i, j, temp;
             bool swapped;
@@ -326,7 +326,6 @@ namespace StockAnalyser
         
         /*
          * TODO – Create merge sort (both asc and desc)
-         * TODO – Make sorting algortihms static
          */
     }
 }
