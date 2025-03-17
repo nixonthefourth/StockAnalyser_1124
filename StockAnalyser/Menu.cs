@@ -27,20 +27,28 @@ namespace StockAnalyser
             Visuals.DisplayMessage("\n \n Actions:");
             Visuals.DisplayMessage("\n 1 | Select Stock Data To Analyse");
             Visuals.DisplayMessage("\n 2 | Exit");
-
+            
             while (true)
             {
-                Visuals.DisplayMessage("\n Please enter the desired action from the list: ");
-                int menuActionLocal = int.Parse(Console.ReadLine());
-
-                if (menuActionLocal == 1)
+                try
                 {
-                    ProgramMenuArraySize();
-                    break;
-                } else if (menuActionLocal == 2) {
-                    Environment.Exit(0);
-                } else {
-                    Visuals.DisplayMessage("\n Invalid action. Please try again.");
+                    Visuals.DisplayMessage("\n Please enter the desired action from the list: ");
+                    int menuActionLocal = int.Parse(Console.ReadLine());
+                    
+                    if (menuActionLocal == 1)
+                    {
+                        ProgramMenuArraySize();
+                        
+                        break;
+                    } else if (menuActionLocal == 2) {
+                        Environment.Exit(0);
+                    } else {
+                        Visuals.DisplayMessage("\n Invalid action. Please try again.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Visuals.DisplayMessage("\n Only ints are allowed!");
                 }
             }
         }
@@ -73,26 +81,39 @@ namespace StockAnalyser
 
             while (true)
             {
-                Visuals.DisplayMessage("\n Please enter the desired action from the list: ");
-                int menuAction = int.Parse(Console.ReadLine());
-
-                if (menuAction == 1)
+                try
                 {
-                    _arraySizeFlag = true;
-                    ProgramMenuStockSelect();
-                    ProgramMenuSort(_array);
-                    
-                    break;
-                } else if (menuAction == 2) {
-                    _arraySizeFlag = false;
-                    ProgramMenuStockSelect();
-                    ProgramMenuSort(_array);
-                    
-                    break;
-                } else if (menuAction == 3) {
-                    break;
-                } else {
-                    Visuals.DisplayMessage("\n Invalid action. Please try again.");
+                    Visuals.DisplayMessage("\n Please enter the desired action from the list: ");
+                    int menuAction = int.Parse(Console.ReadLine());
+
+                    if (menuAction == 1)
+                    {
+                        _arraySizeFlag = true;
+                        ProgramMenuStockSelect();
+                        ProgramMenuSort(_array);
+
+                        break;
+                    }
+                    else if (menuAction == 2)
+                    {
+                        _arraySizeFlag = false;
+                        ProgramMenuStockSelect();
+                        ProgramMenuSort(_array);
+
+                        break;
+                    }
+                    else if (menuAction == 3)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Visuals.DisplayMessage("\n Invalid action. Please try again.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Visuals.DisplayMessage("\n Only ints are allowed!");
                 }
             }
         }
@@ -109,36 +130,61 @@ namespace StockAnalyser
 
             while (true)
             {
-                Visuals.DisplayMessage("\n Please enter the desired action from the list: ");
-                int menuAction = int.Parse(Console.ReadLine());
-
-                if (menuAction == 1 && _arraySizeFlag)
+                try
                 {
-                    _array = Solution.FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_256.txt");
-                    
-                    break;
-                } else if (menuAction == 2 && _arraySizeFlag) {
-                    _array = Solution.FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_2_256.txt");
-                    
-                    break;
-                } else if (menuAction == 3 && _arraySizeFlag) {
-                    _array = Solution.FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_256.txt");
-                    
-                    break;
-                } else if (menuAction == 1 && !_arraySizeFlag) {
-                    _array = Solution.FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_2048.txt");
-                    
-                    break;
-                } else if (menuAction == 2 && !_arraySizeFlag) {
-                    _array = Solution.FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_2_2048.txt");
-                    
-                    break;
-                } else if (menuAction == 3 && !_arraySizeFlag) {
-                    _array = Solution.FileGet("/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_2048.txt");
-                    
-                    break;
-                } else {
-                    Visuals.DisplayMessage("\n Invalid action. Please try again.");
+                    Visuals.DisplayMessage("\n Please enter the desired action from the list: ");
+                    int menuAction = int.Parse(Console.ReadLine());
+
+                    if (menuAction == 1 && _arraySizeFlag)
+                    {
+                        _array = Solution.FileGet(
+                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_256.txt");
+
+                        break;
+                    }
+                    else if (menuAction == 2 && _arraySizeFlag)
+                    {
+                        _array = Solution.FileGet(
+                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_2_256.txt");
+
+                        break;
+                    }
+                    else if (menuAction == 3 && _arraySizeFlag)
+                    {
+                        _array = Solution.FileGet(
+                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_256.txt");
+
+                        break;
+                    }
+                    else if (menuAction == 1 && !_arraySizeFlag)
+                    {
+                        _array = Solution.FileGet(
+                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_2048.txt");
+
+                        break;
+                    }
+                    else if (menuAction == 2 && !_arraySizeFlag)
+                    {
+                        _array = Solution.FileGet(
+                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_2_2048.txt");
+
+                        break;
+                    }
+                    else if (menuAction == 3 && !_arraySizeFlag)
+                    {
+                        _array = Solution.FileGet(
+                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_2048.txt");
+
+                        break;
+                    }
+                    else
+                    {
+                        Visuals.DisplayMessage("\n Invalid action. Please try again.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Visuals.DisplayMessage("\n Only ints are allowed!");
                 }
             }
         }
@@ -173,65 +219,86 @@ namespace StockAnalyser
                 
             while (true)
             {
-                Visuals.DisplayMessage("\n Please enter the desired action from the list: ");
-                int menuAction = int.Parse(Console.ReadLine());
-
-                if (menuAction == 1)
+                try
                 {
-                    if (ProgramMenuAsc())
+                    Visuals.DisplayMessage("\n Please enter the desired action from the list: ");
+                    int menuAction = int.Parse(Console.ReadLine());
+
+                    if (menuAction == 1)
                     {
-                        Sort.InsertionSortAsc(array);
-                    } else if (!ProgramMenuAsc()) {
-                        Sort.InsertionSortDesc(array);
+                        if (ProgramMenuAsc())
+                        {
+                            Sort.InsertionSortAsc(array);
+                        }
+                        else if (!ProgramMenuAsc())
+                        {
+                            Sort.InsertionSortDesc(array);
+                        }
+
+                        Console.WriteLine();
+                        Visuals.DisplayMessage(string.Join(" | ", array));
+                        Console.WriteLine();
+
+                        Thread.Sleep(3000);
+
+                        Console.Clear();
+
+                        break;
                     }
-                        
-                    Console.WriteLine();
-                    Visuals.DisplayMessage(string.Join(" | ", array));
-                    Console.WriteLine();
-                        
-                    System.Threading.Thread.Sleep(3000);
-                        
-                    Console.Clear();
-                        
-                    break;
-                } else if (menuAction == 2) {
-                    if (ProgramMenuAsc())
+                    else if (menuAction == 2)
                     {
-                        Sort.QuickSortAsc(array, 0, array.Length - 1);
-                    } else if (!ProgramMenuAsc()) {
-                        Sort.QuickSortDesc(array, 0, array.Length - 1);
+                        if (ProgramMenuAsc())
+                        {
+                            Sort.QuickSortAsc(array, 0, array.Length - 1);
+                        }
+                        else if (!ProgramMenuAsc())
+                        {
+                            Sort.QuickSortDesc(array, 0, array.Length - 1);
+                        }
+
+                        Console.WriteLine();
+                        Visuals.DisplayMessage(string.Join(" | ", array));
+                        Console.WriteLine();
+
+                        Thread.Sleep(3000);
+
+                        Console.Clear();
+
+                        break;
                     }
-                        
-                    Console.WriteLine();
-                    Visuals.DisplayMessage(string.Join(" | ", array));
-                    Console.WriteLine();
-                        
-                    System.Threading.Thread.Sleep(3000);
-                        
-                    Console.Clear();
-                        
-                    break;
-                } else if (menuAction == 3) {
-                    if (ProgramMenuAsc())
+                    else if (menuAction == 3)
                     {
-                        Sort.BubbleSortAsc(array);
-                    } else if (!ProgramMenuAsc()) {
-                        Sort.BubbleSortDesc(array);
+                        if (ProgramMenuAsc())
+                        {
+                            Sort.BubbleSortAsc(array);
+                        }
+                        else if (!ProgramMenuAsc())
+                        {
+                            Sort.BubbleSortDesc(array);
+                        }
+
+                        Console.WriteLine();
+                        Visuals.DisplayMessage(string.Join(" | ", array));
+                        Console.WriteLine();
+
+                        Thread.Sleep(3000);
+
+                        Console.Clear();
+
+                        break;
                     }
-                        
-                    Console.WriteLine();
-                    Visuals.DisplayMessage(string.Join(" | ", array));
-                    Console.WriteLine();
-                        
-                    System.Threading.Thread.Sleep(3000);
-                        
-                    Console.Clear();
-                        
-                    break;
-                } else if (menuAction == 4) {
-                    break;
-                } else {
-                    Visuals.DisplayMessage("\n Invalid action. Please try again.");
+                    else if (menuAction == 4)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Visuals.DisplayMessage("\n Invalid action. Please try again.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Visuals.DisplayMessage("\n Only ints are allowed!");
                 }
             }
         }
@@ -266,18 +333,29 @@ namespace StockAnalyser
 
             while (true)
             {
-                Visuals.DisplayMessage("\n Please enter the desired order from the list: ");
-                int menuAction = int.Parse(Console.ReadLine());
-
-                if (menuAction == 1)
+                try
                 {
-                    return true;
-                    break;
-                } else if (menuAction == 2) {
-                    return false;
-                    break;
-                } else {
-                    Visuals.DisplayMessage("\n Invalid action. Please try again.");
+                    Visuals.DisplayMessage("\n Please enter the desired order from the list: ");
+                    int menuAction = int.Parse(Console.ReadLine());
+
+                    if (menuAction == 1)
+                    {
+                        return true;
+                        break;
+                    }
+                    else if (menuAction == 2)
+                    {
+                        return false;
+                        break;
+                    }
+                    else
+                    {
+                        Visuals.DisplayMessage("\n Invalid action. Please try again.");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Visuals.DisplayMessage("\n Only ints are allowed!");
                 }
             }
         }
