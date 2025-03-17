@@ -3,6 +3,8 @@ namespace StockAnalyser
     public class Solution
     {
         Sort _sort = new Sort();
+        private bool _arraySizeFlag;
+        
         public void ProgramLoop()
         {
             
@@ -60,7 +62,7 @@ namespace StockAnalyser
             Visuals.DisplayMessage("\n Welcome to the stock analyser!".ToUpper());
             
             Visuals.DisplayMessage("\n \n Actions:".ToUpper());
-            Visuals.DisplayMessage("\n 1 | Select Stock Data".ToUpper());
+            Visuals.DisplayMessage("\n 1 | Select Stock Data To Analyse".ToUpper());
             Visuals.DisplayMessage("\n 2 | Exit".ToUpper());
 
             while (true)
@@ -70,10 +72,51 @@ namespace StockAnalyser
 
                 if (menuAction == 1)
                 {
-                    
+                    ProgramMenuArraySize();
                     break;
                 } else if (menuAction == 2) {
                     Environment.Exit(0);
+                } else {
+                    Visuals.DisplayMessage("\n Invalid action. Please try again.".ToUpper());
+                }
+            }
+        }
+
+        /// <summary>
+        /// Getting the array sizes of the stock files in the selectors.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// Messages are entered first.
+        /// If '1' is selected, the flag is set to true (hence array size is 256).
+        /// If '2' is selected, the flag is set to true (hence array size is 2048).
+        /// Back is the option '3', which simply breaks the loop.
+        ///
+        /// Otherwise, enter the data again, since we don't want to bother with the wrong input.
+        /// </remarks>
+        private void ProgramMenuArraySize()
+        {
+            Console.Clear();
+            
+            Visuals.DisplayMessage("\n \n Actions:".ToUpper());
+            Visuals.DisplayMessage("\n 1 | 256 Data Points".ToUpper());
+            Visuals.DisplayMessage("\n 2 | 2048 Data Points".ToUpper());
+            Visuals.DisplayMessage("\n 3 | Back".ToUpper());
+
+            while (true)
+            {
+                Visuals.DisplayMessage("\n Please enter the desired action from the list: ".ToUpper());
+                int menuAction = int.Parse(Console.ReadLine());
+
+                if (menuAction == 1)
+                {
+                    _arraySizeFlag = true;
+                    break;
+                } else if (menuAction == 2) {
+                    _arraySizeFlag = false;
+                    break;
+                } else if (menuAction == 3) {
+                    break;
                 } else {
                     Visuals.DisplayMessage("\n Invalid action. Please try again.".ToUpper());
                 }
@@ -129,6 +172,8 @@ namespace StockAnalyser
                     System.Threading.Thread.Sleep(3000);
                     
                     Console.Clear();
+                    
+                    break;
                 } else if (menuAction == 2) {
                     if (ProgramMenuAsc())
                     {
@@ -144,6 +189,8 @@ namespace StockAnalyser
                     System.Threading.Thread.Sleep(3000);
                     
                     Console.Clear();
+                    
+                    break;
                 } else if (menuAction == 3) {
                     if (ProgramMenuAsc())
                     {
@@ -159,6 +206,8 @@ namespace StockAnalyser
                     System.Threading.Thread.Sleep(3000);
                     
                     Console.Clear();
+                    
+                    break;
                 } else if (menuAction == 4) {
                     break;
                 } else {
