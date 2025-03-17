@@ -81,7 +81,16 @@ namespace StockAnalyser
                 }
             }
         }
-
+        
+        /*
+         * TODO – Create stock index (1 'till 3 for borh 256 and 2048) selection
+         * TODO – Create display method
+         * TODO – Remove .ToUpper() everywhere
+         * TODO – Create unique path selector method
+         * TODO – Create method to merge files
+         * TODO – Build in the merge method into the menu code
+         */
+        
         /// <summary>
         /// Getting the array sizes of the stock files in the selectors.
         /// </summary>

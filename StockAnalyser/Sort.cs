@@ -323,5 +323,9 @@ namespace StockAnalyser
                     break;
             }
         }
+        
+        /*
+         * TODO – Create merge sort (both asc and desc)
+         */
     }
 }

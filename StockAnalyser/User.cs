@@ -35,5 +35,10 @@ namespace StockAnalyser
                 }
             }
         }
+        
+        /*
+         * TODO – Create method that searches for the nearest value entered by user
+         *  (if the value doesn't exist in the array)
+         */
     }
 }
