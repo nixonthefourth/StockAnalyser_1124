@@ -326,6 +326,7 @@ namespace StockAnalyser
         
         /*
          * TODO – Create merge sort (both asc and desc)
+         * TODO – Make sorting algortihms static
          */
     }
 }
