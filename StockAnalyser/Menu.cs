@@ -55,7 +55,8 @@ namespace StockAnalyser
         
         /*
          * TODO – Build in the merge method into the menu code
-         * TODO – Create search for each associated sort
+         * TODO – Create search for each associated value
+         * TODO – Implement 'Press Enter To Continue'
         */
             
         /// <summary>
@@ -215,7 +216,8 @@ namespace StockAnalyser
             Visuals.DisplayMessage("\n 1 | Insertion Sort");
             Visuals.DisplayMessage("\n 2 | Quick Sort");
             Visuals.DisplayMessage("\n 3 | Bubble Sort");
-            Visuals.DisplayMessage("\n 4 | Back");
+            Visuals.DisplayMessage("\n 4 | Merge Sort");
+            Visuals.DisplayMessage("\n 5 | Back");
                 
             while (true)
             {
@@ -229,9 +231,7 @@ namespace StockAnalyser
                         if (ProgramMenuAsc())
                         {
                             Sort.InsertionSortAsc(array);
-                        }
-                        else if (!ProgramMenuAsc())
-                        {
+                        } else if (!ProgramMenuAsc()) {
                             Sort.InsertionSortDesc(array);
                         }
 
@@ -244,15 +244,11 @@ namespace StockAnalyser
                         Console.Clear();
 
                         break;
-                    }
-                    else if (menuAction == 2)
-                    {
+                    } else if (menuAction == 2) {
                         if (ProgramMenuAsc())
                         {
                             Sort.QuickSortAsc(array, 0, array.Length - 1);
-                        }
-                        else if (!ProgramMenuAsc())
-                        {
+                        } else if (!ProgramMenuAsc()) {
                             Sort.QuickSortDesc(array, 0, array.Length - 1);
                         }
 
@@ -265,15 +261,11 @@ namespace StockAnalyser
                         Console.Clear();
 
                         break;
-                    }
-                    else if (menuAction == 3)
-                    {
+                    } else if (menuAction == 3) {
                         if (ProgramMenuAsc())
                         {
                             Sort.BubbleSortAsc(array);
-                        }
-                        else if (!ProgramMenuAsc())
-                        {
+                        } else if (!ProgramMenuAsc()) {
                             Sort.BubbleSortDesc(array);
                         }
 
@@ -286,13 +278,26 @@ namespace StockAnalyser
                         Console.Clear();
 
                         break;
-                    }
-                    else if (menuAction == 4)
-                    {
+                    } else if (menuAction == 4) {
+                        if (ProgramMenuAsc())
+                        {
+                            Sort.MergeSortAsc(array, 0, array.Length - 1);
+                        } else if (!ProgramMenuAsc()) {
+                            Sort.MergeSortDesc(array, 0, array.Length - 1);
+                        }
+
+                        Console.WriteLine();
+                        Visuals.DisplayMessage(string.Join(" | ", array));
+                        Console.WriteLine();
+
+                        Thread.Sleep(3000);
+
+                        Console.Clear();
+
                         break;
-                    }
-                    else
-                    {
+                    } else if (menuAction == 5) {
+                        break;
+                    } else {
                         Visuals.DisplayMessage("\n Invalid action. Please try again.");
                     }
                 }

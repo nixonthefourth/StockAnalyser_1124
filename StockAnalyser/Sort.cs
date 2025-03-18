@@ -324,8 +324,258 @@ namespace StockAnalyser
             }
         }
         
-        /*
-         * TODO – Create merge sort (both asc and desc)
-         */
+        /// <summary>
+        /// Creates ascending merge sort algorithm, which will be used in the main function later.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// Array to be sorted.
+        /// </param>
+        /// 
+        /// <param name="left">
+        /// Left pointer of the array (set with 0).
+        /// </param>
+        /// 
+        /// <param name="mid">
+        /// Midpoint of the main array.
+        /// </param>
+        /// 
+        /// <param name="right">
+        /// Right-hand pointer of the array.
+        /// </param>
+        ///
+        /// <remarks>
+        /// This method merges two subarrays of 'array'.
+        ///
+        /// First, sizes of these arrays are defined using pointers.
+        /// n1 – Stores the left-most subarray
+        /// n2 – Stores the right-most subarray
+        ///
+        /// Temp arrays are created later on for right and left-hand arrays of sizes n1 and n2 respectively.
+        /// Data is copied then into the temp-arrays later.
+        ///
+        /// Then, these arrays need to be merged. Indeces 'i' and 'j' are redefined later.
+        /// Via while loop we add the pieces of data in the array until pointers are met with the arrays lengths.
+        ///
+        /// If any elements are still left in the temp arrays, they are copied back to the main array.
+        /// </remarks>
+        private static void MergeAsc(int[] array, int left, int mid, int right)
+        {
+            int n1 = mid - left + 1;
+            int n2 = right - mid;
+
+            int[] leftTemp = new int[n1];
+            int[] rightTemp = new int[n2];
+            
+            int i, j;
+
+            for (i = 0; i < n1; ++i)
+            {
+                leftTemp[i] = array[left + i];
+            }
+
+            for (j = 0; j < n2; ++j)
+            {
+                rightTemp[j] = array[mid + 1 + j];
+            }
+
+            i = 0;
+            j = 0;
+            
+            int k = left;
+            
+            while (i < n1 && j < n2)
+            {
+                if (leftTemp[i] <= rightTemp[j])
+                {
+                    array[k] = leftTemp[i];
+                    
+                    i++;
+                } else {
+                    array[k] = rightTemp[j];
+                    
+                    j++;
+                }
+                
+                k++;
+            }
+
+            while (i < n1)
+            {
+                array[k] = leftTemp[i];
+                
+                i++;
+                k++;
+            }
+            
+            while (j < n2)
+            {
+                array[k] = rightTemp[j];
+                
+                j++;
+                k++;
+            }
+        }
+
+        /// <summary>
+        /// Main sorting function that recursively calls the ascending merging method.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// An array to be sorted.
+        /// </param>
+        /// 
+        /// <param name="left">
+        /// Left-hand pointer of the array.
+        /// </param>
+        /// 
+        /// <param name="right">
+        /// Right-hand pointer of the array.
+        /// </param>
+        ///
+        /// <remarks>
+        /// Recursively calls the main function as well as the sorting function.
+        /// There are two recursive calls, since we need to separate the arrays into two halves,
+        /// which allows us to sort the array.
+        /// </remarks>
+        public static void MergeSortAsc(int[] array, int left, int right)
+        {
+            if (left < right)
+            {
+
+                int mid = left + (right - left) / 2;
+
+                MergeSortAsc(array, left, mid);
+                MergeSortAsc(array, mid + 1, right);
+
+                MergeAsc(array, left, mid, right);
+            }
+        }
+        
+        /// <summary>
+        /// Creates descending merge sort algorithm, which will be used in the main function later.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// Array to be sorted.
+        /// </param>
+        /// 
+        /// <param name="left">
+        /// Left pointer of the array (set with 0).
+        /// </param>
+        /// 
+        /// <param name="mid">
+        /// Midpoint of the main array.
+        /// </param>
+        /// 
+        /// <param name="right">
+        /// Right-hand pointer of the array.
+        /// </param>
+        ///
+        /// <remarks>
+        /// This method merges two subarrays of 'array'.
+        ///
+        /// First, sizes of these arrays are defined using pointers.
+        /// n1 – Stores the left-most subarray
+        /// n2 – Stores the right-most subarray
+        ///
+        /// Temp arrays are created later on for right and left-hand arrays of sizes n1 and n2 respectively.
+        /// Data is copied then into the temp-arrays later.
+        ///
+        /// Then, these arrays need to be merged. Indeces 'i' and 'j' are redefined later.
+        /// Via while loop we add the pieces of data in the array until pointers are met with the arrays lengths.
+        ///
+        /// If any elements are still left in the temp arrays, they are copied back to the main array.
+        /// </remarks>
+        private static void MergeDesc(int[] array, int left, int mid, int right)
+        {
+            int n1 = mid - left + 1;
+            int n2 = right - mid;
+
+            int[] leftTemp = new int[n1];
+            int[] rightTemp = new int[n2];
+            int i, j;
+
+            for (i = 0; i < n1; ++i)
+            {
+                leftTemp[i] = array[left + i];
+            }
+
+            for (j = 0; j < n2; ++j)
+            {
+                rightTemp[j] = array[mid + 1 + j];
+            }
+
+            i = 0;
+            j = 0;
+
+            int k = left;
+            while (i < n1 && j < n2)
+            {
+                if (leftTemp[i] >= rightTemp[j])
+                {
+                    array[k] = leftTemp[i];
+                    
+                    i++;
+                } else {
+                    array[k] = rightTemp[j];
+                    
+                    j++;
+                }
+                
+                k++;
+            }
+
+            while (i < n1)
+            {
+                array[k] = leftTemp[i];
+                
+                i++;
+                k++;
+            }
+
+            while (j < n2)
+            {
+                array[k] = rightTemp[j];
+                
+                j++;
+                k++;
+            }
+        }
+
+        /// <summary>
+        /// Main sorting function that recursively calls the descending merging method.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// An array to be sorted.
+        /// </param>
+        /// 
+        /// <param name="left">
+        /// Left-hand pointer of the array.
+        /// </param>
+        /// 
+        /// <param name="right">
+        /// Right-hand pointer of the array.
+        /// </param>
+        ///
+        /// <remarks>
+        /// Recursively calls the main function as well as the sorting function.
+        /// There are two recursive calls, since we need to separate the arrays into two halves,
+        /// which allows us to sort the array.
+        /// </remarks>
+        public static void MergeSortDesc(int[] array, int left, int right)
+        {
+            if (left < right)
+            {
+
+                int mid = left + (right - left) / 2;
+
+                MergeSortAsc(array, left, mid);
+                MergeSortAsc(array, mid + 1, right);
+
+                MergeAsc(array, left, mid, right);
+            }
+        }
     }
 }
