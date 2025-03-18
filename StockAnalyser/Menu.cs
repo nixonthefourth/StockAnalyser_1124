@@ -3,6 +3,7 @@ namespace StockAnalyser
     public class Menu
     {
         private bool _arraySizeFlag;
+        private bool _sortOrderFlag;
         private int[] _array;
         
         /// <summary>
@@ -214,10 +215,12 @@ namespace StockAnalyser
 
                     if (menuAction == 1)
                     {
-                        if (ProgramMenuAsc())
+                        ProgramMenuAsc();
+                        
+                        if (_sortOrderFlag)
                         {
                             Sort.InsertionSortAsc(array);
-                        } else if (!ProgramMenuAsc()) {
+                        } else if (!_sortOrderFlag) {
                             Sort.InsertionSortDesc(array);
                         }
 
@@ -231,10 +234,12 @@ namespace StockAnalyser
 
                         break;
                     } else if (menuAction == 2) {
-                        if (ProgramMenuAsc())
+                        ProgramMenuAsc();
+
+                        if (_sortOrderFlag)
                         {
                             Sort.QuickSortAsc(array, 0, array.Length - 1);
-                        } else if (!ProgramMenuAsc()) {
+                        } else if (!_sortOrderFlag) {
                             Sort.QuickSortDesc(array, 0, array.Length - 1);
                         }
 
@@ -248,10 +253,12 @@ namespace StockAnalyser
 
                         break;
                     } else if (menuAction == 3) {
-                        if (ProgramMenuAsc())
+                        ProgramMenuAsc();
+
+                        if (_sortOrderFlag)
                         {
                             Sort.BubbleSortAsc(array);
-                        } else if (!ProgramMenuAsc()) {
+                        } else if (!_sortOrderFlag) {
                             Sort.BubbleSortDesc(array);
                         }
 
@@ -265,10 +272,12 @@ namespace StockAnalyser
 
                         break;
                     } else if (menuAction == 4) {
-                        if (ProgramMenuAsc())
+                        ProgramMenuAsc();
+
+                        if (_sortOrderFlag)
                         {
                             Sort.MergeSortAsc(array, 0, array.Length - 1);
-                        } else if (!ProgramMenuAsc()) {
+                        } else if (!_sortOrderFlag) {
                             Sort.MergeSortDesc(array, 0, array.Length - 1);
                         }
 
@@ -312,7 +321,7 @@ namespace StockAnalyser
         /// In case none of the actions correspond with the selection, we just throw an 'else' statement,
         /// where data needs to be re-entered.
         /// </remarks>
-        private bool ProgramMenuAsc()
+        private void ProgramMenuAsc()
         {
             Console.Clear();
 
@@ -329,10 +338,10 @@ namespace StockAnalyser
 
                     if (menuAction == 1)
                     {
-                        return true;
+                        _sortOrderFlag = true;
                         break;
                     } else if (menuAction == 2) {
-                        return false;
+                        _sortOrderFlag = false;
                         break;
                     } else {
                         Visuals.DisplayMessage("\n Invalid action. Please try again.");
