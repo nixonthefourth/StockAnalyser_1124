@@ -243,7 +243,7 @@ namespace StockAnalyser
                         }
 
                         Console.WriteLine();
-                        Visuals.DisplayMessage(string.Join(" | ", array));
+                        Visuals.DisplayStock(_arraySizeFlag, array);
                         Console.WriteLine();
 
                         ConfirmationMessage();
@@ -262,7 +262,7 @@ namespace StockAnalyser
                         }
 
                         Console.WriteLine();
-                        Visuals.DisplayMessage(string.Join(" | ", array));
+                        Visuals.DisplayStock(_arraySizeFlag, array);
                         Console.WriteLine();
 
                         ConfirmationMessage();
@@ -281,7 +281,7 @@ namespace StockAnalyser
                         }
 
                         Console.WriteLine();
-                        Visuals.DisplayMessage(string.Join(" | ", array));
+                        Visuals.DisplayStock(_arraySizeFlag, array);
                         Console.WriteLine();
 
                         ConfirmationMessage();
@@ -300,7 +300,7 @@ namespace StockAnalyser
                         }
 
                         Console.WriteLine();
-                        Visuals.DisplayMessage(string.Join(" | ", array));
+                        Visuals.DisplayStock(_arraySizeFlag, array);
                         Console.WriteLine();
 
                         ConfirmationMessage();

@@ -2,7 +2,17 @@ namespace StockAnalyser
 {
     public class Visuals
     {
-        // Typewriter Visual
+        /// <summary>
+        /// Typewriter Visual
+        /// </summary>
+        /// 
+        /// <param name="message">
+        /// Message that needs to be displayed
+        /// </param>
+        ///
+        /// <remarks>
+        /// Displays the string using for look and core threading, where each value is shown with a delay.
+        /// </remarks>
         public static void DisplayMessage(string message)
         {
             for (int i = 0; i < message.Length; i++)
@@ -11,9 +21,23 @@ namespace StockAnalyser
                 System.Threading.Thread.Sleep(15);
             }
         }
-        
-        /*
-         * TODO – Create display method
-         */
+
+        public static void DisplayStock(bool stockSizeFlag, int[] stock)
+        {
+            if (stockSizeFlag)
+            {
+                int step = 10;
+                for (int i = step - 1; i < stock.Length; i+= step)
+                {
+                    DisplayMessage(stock[i].ToString() + "\n");
+                }
+            } else if (!stockSizeFlag) {
+                int step = 50;
+                for (int i = step - 1; i < stock.Length; i+= step)
+                {
+                    DisplayMessage(stock[i].ToString() + "\n");
+                } 
+            }
+        }
     }
 }
