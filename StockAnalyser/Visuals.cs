@@ -11,5 +11,9 @@ namespace StockAnalyser
                 System.Threading.Thread.Sleep(15);
             }
         }
+        
+        /*
+         * TODO – Create display method
+         */
     }
 }
