@@ -45,17 +45,14 @@ namespace StockAnalyser
                     } else {
                         Visuals.DisplayMessage("\n Invalid action. Please try again.");
                     }
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     Visuals.DisplayMessage("\n Only ints are allowed!");
                 }
             }
         }
         
         /*
-         * TODO – Build in the merge method into the menu code
-         * TODO – Create search for each associated value
+         * TODO – Build in the merge method into the menu class
          * TODO – Implement 'Press Enter To Continue'
         */
             
@@ -94,26 +91,18 @@ namespace StockAnalyser
                         ProgramMenuSort(_array);
 
                         break;
-                    }
-                    else if (menuAction == 2)
-                    {
+                    } else if (menuAction == 2) {
                         _arraySizeFlag = false;
                         ProgramMenuStockSelect();
                         ProgramMenuSort(_array);
 
                         break;
-                    }
-                    else if (menuAction == 3)
-                    {
+                    } else if (menuAction == 3) {
                         break;
-                    }
-                    else
-                    {
+                    } else {
                         Visuals.DisplayMessage("\n Invalid action. Please try again.");
                     }
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     Visuals.DisplayMessage("\n Only ints are allowed!");
                 }
             }
@@ -182,9 +171,7 @@ namespace StockAnalyser
                     {
                         Visuals.DisplayMessage("\n Invalid action. Please try again.");
                     }
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     Visuals.DisplayMessage("\n Only ints are allowed!");
                 }
             }
@@ -242,6 +229,8 @@ namespace StockAnalyser
                         Thread.Sleep(3000);
 
                         Console.Clear();
+                        
+                        ProgramMenuSearch();
 
                         break;
                     } else if (menuAction == 2) {
@@ -259,6 +248,8 @@ namespace StockAnalyser
                         Thread.Sleep(3000);
 
                         Console.Clear();
+                        
+                        ProgramMenuSearch();
 
                         break;
                     } else if (menuAction == 3) {
@@ -276,6 +267,8 @@ namespace StockAnalyser
                         Thread.Sleep(3000);
 
                         Console.Clear();
+                        
+                        ProgramMenuSearch();
 
                         break;
                     } else if (menuAction == 4) {
@@ -293,6 +286,8 @@ namespace StockAnalyser
                         Thread.Sleep(3000);
 
                         Console.Clear();
+                        
+                        ProgramMenuSearch();
 
                         break;
                     } else if (menuAction == 5) {
@@ -300,9 +295,7 @@ namespace StockAnalyser
                     } else {
                         Visuals.DisplayMessage("\n Invalid action. Please try again.");
                     }
-                }
-                catch (Exception e)
-                {
+                } catch (Exception e) {
                     Visuals.DisplayMessage("\n Only ints are allowed!");
                 }
             }
@@ -347,19 +340,77 @@ namespace StockAnalyser
                     {
                         return true;
                         break;
-                    }
-                    else if (menuAction == 2)
-                    {
+                    } else if (menuAction == 2) {
                         return false;
                         break;
-                    }
-                    else
-                    {
+                    } else {
                         Visuals.DisplayMessage("\n Invalid action. Please try again.");
                     }
+                } catch (Exception e) {
+                    Visuals.DisplayMessage("\n Only ints are allowed!");
                 }
-                catch (Exception e)
+            }
+        }
+
+        private void ProgramMenuSearch()
+        {
+            Console.Clear();
+            
+            Visuals.DisplayMessage("\n \n Actions:");
+            Visuals.DisplayMessage("\n 1 | Linear Search");
+            Visuals.DisplayMessage("\n 2 | Binary Search");
+            Visuals.DisplayMessage("\n 3 | Back");
+
+            while (true)
+            {
+                try
                 {
+                    Visuals.DisplayMessage("\n Please enter the desired search algorithm from the list: ");
+                    int menuAction = int.Parse(Console.ReadLine());
+
+                    if (menuAction == 1)
+                    {
+                        try
+                        {
+                            int userValue = User.GetValue();
+                            
+                            int linearResult = Search.LinearSearch(_array, userValue);
+                            
+                            if (linearResult == -1)
+                            {
+                                Visuals.DisplayMessage("\n Value doesn't exist.");
+                            } else {
+                                Visuals.DisplayMessage("\n Value was found here: " + linearResult);
+                            }
+                        } catch (Exception e) {
+                            Visuals.DisplayMessage("\n Only ints are allowed!");
+                        }
+                        
+                        break;
+                    } else if (menuAction == 2) {
+                        try
+                        {
+                            int userValue = User.GetValue();
+                            
+                            int binaryResult = Search.BinarySearch(_array, userValue);
+
+                            if (binaryResult == -1)
+                            {
+                                Visuals.DisplayMessage("\n Value doesn't exist.");
+                            } else {
+                                Visuals.DisplayMessage("\n Value was found here: " + binaryResult);
+                            }
+                        } catch (Exception e) {
+                            Visuals.DisplayMessage("\n Only ints are allowed!");
+                        }
+                        
+                        break;
+                    } else if (menuAction == 3) {
+                        break;
+                    } else {
+                        Visuals.DisplayMessage("\n Invalid action. Please try again.");
+                    }
+                } catch (Exception e) {
                     Visuals.DisplayMessage("\n Only ints are allowed!");
                 }
             }

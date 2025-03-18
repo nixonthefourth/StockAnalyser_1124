@@ -17,7 +17,7 @@ namespace StockAnalyser
         /// user is asked to enter the value again.
         /// If everything is ok, value is returned as an integer.
         /// </remarks>
-        public int GetValue()
+        public static int GetValue()
         {
             while (true)
             {
