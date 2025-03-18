@@ -53,7 +53,6 @@ namespace StockAnalyser
         
         /*
          * TODO – Build in the merge method into the menu class
-         * TODO – Implement 'Press Enter To Continue'
         */
             
         /// <summary>
@@ -226,9 +225,7 @@ namespace StockAnalyser
                         Visuals.DisplayMessage(string.Join(" | ", array));
                         Console.WriteLine();
 
-                        Thread.Sleep(3000);
-
-                        Console.Clear();
+                        ConfirmationMessage();
                         
                         ProgramMenuSearch();
 
@@ -245,9 +242,7 @@ namespace StockAnalyser
                         Visuals.DisplayMessage(string.Join(" | ", array));
                         Console.WriteLine();
 
-                        Thread.Sleep(3000);
-
-                        Console.Clear();
+                        ConfirmationMessage();
                         
                         ProgramMenuSearch();
 
@@ -264,9 +259,7 @@ namespace StockAnalyser
                         Visuals.DisplayMessage(string.Join(" | ", array));
                         Console.WriteLine();
 
-                        Thread.Sleep(3000);
-
-                        Console.Clear();
+                        ConfirmationMessage();
                         
                         ProgramMenuSearch();
 
@@ -283,9 +276,7 @@ namespace StockAnalyser
                         Visuals.DisplayMessage(string.Join(" | ", array));
                         Console.WriteLine();
 
-                        Thread.Sleep(3000);
-
-                        Console.Clear();
+                        ConfirmationMessage();
                         
                         ProgramMenuSearch();
 
@@ -386,6 +377,8 @@ namespace StockAnalyser
                             Visuals.DisplayMessage("\n Only ints are allowed!");
                         }
                         
+                        ConfirmationMessage();
+                        
                         break;
                     } else if (menuAction == 2) {
                         try
@@ -400,6 +393,8 @@ namespace StockAnalyser
                             } else {
                                 Visuals.DisplayMessage("\n Value was found here: " + binaryResult);
                             }
+                            
+                            ConfirmationMessage();
                         } catch (Exception e) {
                             Visuals.DisplayMessage("\n Only ints are allowed!");
                         }
@@ -414,6 +409,17 @@ namespace StockAnalyser
                     Visuals.DisplayMessage("\n Only ints are allowed!");
                 }
             }
+        }
+        
+        /// <summary>
+        /// Confirmation sequence (Press Enter to continue)
+        /// </summary>
+        private void ConfirmationMessage()
+        {
+            Visuals.DisplayMessage("\n \n Press Enter to continue...");
+            Console.ReadLine();
+            
+            Console.Clear();
         }
     }
 }
