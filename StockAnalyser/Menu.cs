@@ -368,6 +368,9 @@ namespace StockAnalyser
             }
         }
 
+        /// <summary>
+        /// Search menu
+        /// </summary>
         private void ProgramMenuSearch()
         {
             Console.Clear();
@@ -393,7 +396,8 @@ namespace StockAnalyser
                             
                             if (linearResult == -1)
                             {
-                                Visuals.DisplayMessage("\n Value doesn't exist.");
+                                int nearestValue = User.FindNearest(_array, userValue);
+                                Visuals.DisplayMessage($"\n Value doesn't exist. Nearest value is: {nearestValue}");
                             } else {
                                 Visuals.DisplayMessage("\n Value was found here: " + linearResult);
                             }

@@ -21,7 +21,7 @@ namespace StockAnalyser
         {
             while (true)
             {
-                Visuals.DisplayMessage("\n Enter the searched number: ".ToUpper());
+                Visuals.DisplayMessage("\n Enter the searched number: ");
             
                 string value = Console.ReadLine();
                 
@@ -37,8 +37,40 @@ namespace StockAnalyser
         }
         
         /*
-         * TODO – Create method that searches for the nearest value entered by user
-         *  (if the value doesn't exist in the array)
+         * TODO – Show all found values.
          */
+
+        /// <summary>
+        /// Finds the nearest value of the searched result.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// Array, where we are looking for the values.
+        /// </param>
+        /// 
+        /// <param name="value">
+        /// Searched value.
+        /// </param>
+        /// 
+        /// <returns>
+        /// Returns the value of the closest value.
+        /// </returns>
+        public static int FindNearest(int[] array, int value)
+        {
+            int closest = array[0];
+            int minDiff = Math.Abs(array[0] - value);
+
+            foreach (int num in array)
+            {
+                int diff = Math.Abs(num - value);
+                if (diff < minDiff)
+                {
+                    minDiff = diff;
+                    closest = num;
+                }
+            }
+            
+            return closest;
+        }
     }
 }
