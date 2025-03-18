@@ -51,10 +51,6 @@ namespace StockAnalyser
                 }
             }
         }
-        
-        /*
-         * TODO – Build in the merge method into the menu class
-        */
             
         /// <summary>
         /// Getting the array sizes of the stock files in the selectors.
@@ -75,8 +71,7 @@ namespace StockAnalyser
             Visuals.DisplayMessage("\n \n Actions:");
             Visuals.DisplayMessage("\n 1 | 256 Data Points");
             Visuals.DisplayMessage("\n 2 | 2048 Data Points");
-            Visuals.DisplayMessage("\n 3 | Back");
-
+            
             while (true)
             {
                 try
@@ -87,17 +82,17 @@ namespace StockAnalyser
                     if (menuAction == 1)
                     {
                         _arraySizeFlag = true;
+                        
                         ProgramMenuStockSelect();
                         ProgramMenuSort(_array);
 
                         break;
                     } else if (menuAction == 2) {
                         _arraySizeFlag = false;
+                        
                         ProgramMenuStockSelect();
                         ProgramMenuSort(_array);
 
-                        break;
-                    } else if (menuAction == 3) {
                         break;
                     } else {
                         Visuals.DisplayMessage("\n Invalid action. Please try again.");
@@ -108,6 +103,16 @@ namespace StockAnalyser
             }
         }
 
+        /// <summary>
+        /// Selectes requires stocks.
+        /// </summary>
+        ///
+        /// <remarks>
+        /// First 3 options give us the stock options depending on the previously selected stock numbres and array sizes.
+        /// Number 4 though is a very peculiar case, where arrays need to be merged.
+        /// Hence, arrays are called first into temp arrays and then merged using 'foreach' loops.
+        /// This is applied in order to merge two arrays into a global one.
+        /// </remarks>
         private void ProgramMenuStockSelect()
         {
             Console.Clear();
@@ -116,8 +121,8 @@ namespace StockAnalyser
             Visuals.DisplayMessage("\n 1 | Stock 1");
             Visuals.DisplayMessage("\n 2 | Stock 2");
             Visuals.DisplayMessage("\n 3 | Stock 3");
-            Visuals.DisplayMessage("\n 4 | Merged Stock (Inactive)");
-
+            Visuals.DisplayMessage("\n 4 | Merged Stock");
+            
             while (true)
             {
                 try
@@ -131,44 +136,58 @@ namespace StockAnalyser
                             "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_256.txt");
 
                         break;
-                    }
-                    else if (menuAction == 2 && _arraySizeFlag)
-                    {
+                    } else if (menuAction == 2 && _arraySizeFlag) {
                         _array = Solution.FileGet(
                             "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_2_256.txt");
 
                         break;
-                    }
-                    else if (menuAction == 3 && _arraySizeFlag)
-                    {
+                    } else if (menuAction == 3 && _arraySizeFlag) {
                         _array = Solution.FileGet(
                             "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_256.txt");
 
                         break;
-                    }
-                    else if (menuAction == 1 && !_arraySizeFlag)
-                    {
+                    } else if (menuAction == 4 && _arraySizeFlag) {
+                        int[] leftTemp = Solution.FileGet(
+                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_256.txt");
+                        
+                        int[] rightTemp = Solution.FileGet(
+                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_256.txt");
+                        
+                        _array = new int[leftTemp.Length + rightTemp.Length];
+
+                        int i = 0;
+                        foreach (int num in leftTemp) _array[i++] = num;
+                        foreach (int num in rightTemp) _array[i++] = num;
+                        
+                        break;
+                    } else if (menuAction == 1 && !_arraySizeFlag) {
                         _array = Solution.FileGet(
                             "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_2048.txt");
 
                         break;
-                    }
-                    else if (menuAction == 2 && !_arraySizeFlag)
-                    {
+                    } else if (menuAction == 2 && !_arraySizeFlag) {
                         _array = Solution.FileGet(
                             "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_2_2048.txt");
 
                         break;
-                    }
-                    else if (menuAction == 3 && !_arraySizeFlag)
-                    {
+                    } else if (menuAction == 3 && !_arraySizeFlag) {
                         _array = Solution.FileGet(
                             "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_2048.txt");
 
                         break;
-                    }
-                    else
-                    {
+                    } else if (menuAction == 4 && !_arraySizeFlag) {
+                        int[] leftTemp = Solution.FileGet(
+                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_2048.txt");
+                        
+                        int[] rightTemp = Solution.FileGet(
+                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_2048.txt");
+                        
+                        int i = 0;
+                        foreach (int num in leftTemp) _array[i++] = num;
+                        foreach (int num in rightTemp) _array[i++] = num;
+                        
+                        break;
+                    } else {
                         Visuals.DisplayMessage("\n Invalid action. Please try again.");
                     }
                 } catch (Exception e) {
@@ -204,7 +223,6 @@ namespace StockAnalyser
             Visuals.DisplayMessage("\n 2 | Quick Sort");
             Visuals.DisplayMessage("\n 3 | Bubble Sort");
             Visuals.DisplayMessage("\n 4 | Merge Sort");
-            Visuals.DisplayMessage("\n 5 | Back");
                 
             while (true)
             {
@@ -290,8 +308,6 @@ namespace StockAnalyser
                         ProgramMenuSearch();
 
                         break;
-                    } else if (menuAction == 5) {
-                        break;
                     } else {
                         Visuals.DisplayMessage("\n Invalid action. Please try again.");
                     }
@@ -359,7 +375,6 @@ namespace StockAnalyser
             Visuals.DisplayMessage("\n \n Actions:");
             Visuals.DisplayMessage("\n 1 | Linear Search");
             Visuals.DisplayMessage("\n 2 | Binary Search");
-            Visuals.DisplayMessage("\n 3 | Back");
 
             while (true)
             {
@@ -408,8 +423,6 @@ namespace StockAnalyser
                             Visuals.DisplayMessage("\n Only ints are allowed!");
                         }
                         
-                        break;
-                    } else if (menuAction == 3) {
                         break;
                     } else {
                         Visuals.DisplayMessage("\n Invalid action. Please try again.");

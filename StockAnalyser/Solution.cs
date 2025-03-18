@@ -42,7 +42,6 @@ namespace StockAnalyser
         
         /*
          * TODO – Create unique path selection method
-         * TODO – Create method to merge files
          */
     }
 }
