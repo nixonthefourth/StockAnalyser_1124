@@ -182,6 +182,8 @@ namespace StockAnalyser
                         int[] rightTemp = Solution.FileGet(
                             "Share_3_2048.txt");
                         
+                        _array = new int[leftTemp.Length + rightTemp.Length];
+
                         int i = 0;
                         foreach (int num in leftTemp) _array[i++] = num;
                         foreach (int num in rightTemp) _array[i++] = num;
