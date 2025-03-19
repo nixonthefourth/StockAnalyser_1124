@@ -39,9 +39,5 @@ namespace StockAnalyser
             
             return array;
         }
-        
-        /*
-         * TODO – Create unique path selection method
-         */
     }
 }

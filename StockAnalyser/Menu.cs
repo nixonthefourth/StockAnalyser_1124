@@ -133,25 +133,25 @@ namespace StockAnalyser
                     if (menuAction == 1 && _arraySizeFlag)
                     {
                         _array = Solution.FileGet(
-                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_256.txt");
+                            "Share_1_256.txt");
 
                         break;
                     } else if (menuAction == 2 && _arraySizeFlag) {
                         _array = Solution.FileGet(
-                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_2_256.txt");
+                            "Share_2_256.txt");
 
                         break;
                     } else if (menuAction == 3 && _arraySizeFlag) {
                         _array = Solution.FileGet(
-                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_256.txt");
+                            "Share_3_256.txt");
 
                         break;
                     } else if (menuAction == 4 && _arraySizeFlag) {
                         int[] leftTemp = Solution.FileGet(
-                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_256.txt");
+                            "Share_1_256.txt");
                         
                         int[] rightTemp = Solution.FileGet(
-                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_256.txt");
+                            "Share_3_256.txt");
                         
                         _array = new int[leftTemp.Length + rightTemp.Length];
 
@@ -162,25 +162,25 @@ namespace StockAnalyser
                         break;
                     } else if (menuAction == 1 && !_arraySizeFlag) {
                         _array = Solution.FileGet(
-                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_2048.txt");
+                            "Share_1_2048.txt");
 
                         break;
                     } else if (menuAction == 2 && !_arraySizeFlag) {
                         _array = Solution.FileGet(
-                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_2_2048.txt");
+                            "Share_2_2048.txt");
 
                         break;
                     } else if (menuAction == 3 && !_arraySizeFlag) {
                         _array = Solution.FileGet(
-                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_2048.txt");
+                            "Share_3_2048.txt");
 
                         break;
                     } else if (menuAction == 4 && !_arraySizeFlag) {
                         int[] leftTemp = Solution.FileGet(
-                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_1_2048.txt");
+                            "Share_1_2048.txt");
                         
                         int[] rightTemp = Solution.FileGet(
-                            "/Users/nick/Documents/Code/Uni/BSc Level 4/Semester B/A&C/Assignments/Assignment 1/StockAnalyser/StockAnalyser/Share_3_2048.txt");
+                            "Share_3_2048.txt");
                         
                         int i = 0;
                         foreach (int num in leftTemp) _array[i++] = num;
@@ -417,7 +417,8 @@ namespace StockAnalyser
 
                             if (binaryResult == -1)
                             {
-                                Visuals.DisplayMessage("\n Value doesn't exist.");
+                                int nearestValue = User.FindNearest(_array, userValue);
+                                Visuals.DisplayMessage($"\n Value doesn't exist. Nearest value is: {nearestValue}");
                             } else {
                                 Visuals.DisplayMessage("\n Value was found here: " + binaryResult);
                             }
