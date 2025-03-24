@@ -2,6 +2,10 @@ namespace StockAnalyser
 {
     public class Solution
     {
+        
+        /// <summary>
+        /// Main loop of the program.
+        /// </summary>
         public static void ProgramLoop()
         {
             Menu programMenu = new Menu();
