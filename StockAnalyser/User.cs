@@ -68,7 +68,18 @@ namespace StockAnalyser
             
             return closest;
         }
-
+        
+        /// <summary>
+        /// Shows all found values using linear search.
+        /// </summary>
+        /// 
+        /// <param name="array">
+        /// An array of values we need to iterate through.
+        /// </param>
+        /// 
+        /// <param name="value">
+        /// Searched value.
+        /// </param>
         public static void ShowAllFound(int[] array, int value)
         {
             for (int i = 0; i < array.Length; i++)

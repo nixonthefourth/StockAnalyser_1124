@@ -373,6 +373,12 @@ namespace StockAnalyser
         /// <summary>
         /// Search menu
         /// </summary>
+        ///
+        /// <remarks>
+        /// Searches through the array using user's input.
+        ///
+        /// If the value is not found, the output is shown.
+        /// </remarks>
         private void ProgramMenuSearch()
         {
             Console.Clear();
