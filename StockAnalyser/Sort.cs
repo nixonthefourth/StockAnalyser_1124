@@ -571,10 +571,10 @@ namespace StockAnalyser
 
                 int mid = left + (right - left) / 2;
 
-                MergeSortAsc(array, left, mid);
-                MergeSortAsc(array, mid + 1, right);
+                MergeSortDesc(array, left, mid);
+                MergeSortDesc(array, mid + 1, right);
 
-                MergeAsc(array, left, mid, right);
+                MergeDesc(array, left, mid, right);
             }
         }
     }

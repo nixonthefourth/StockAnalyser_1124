@@ -35,10 +35,6 @@ namespace StockAnalyser
                 }
             }
         }
-        
-        /*
-         * TODO – Show all found values.
-         */
 
         /// <summary>
         /// Finds the nearest value of the searched result.

@@ -293,7 +293,7 @@ namespace StockAnalyser
                         break;
                     } else if (menuAction == 4) {
                         ProgramMenuAsc();
-
+                        
                         if (_sortOrderFlag)
                         {
                             Sort.MergeSortAsc(array, 0, array.Length - 1);
