@@ -396,13 +396,16 @@ namespace StockAnalyser
                             
                             int linearResult = Search.LinearSearch(_array, userValue);
                             
-                            if (linearResult == -1)
+                            if (linearResult != -1)
                             {
+                                Visuals.DisplayMessage("\n Value was found here: " + linearResult);
+                                User.ShowAllFound(_array, userValue);
+                            } else if (linearResult == -1) {
                                 int nearestValue = User.FindNearest(_array, userValue);
                                 Visuals.DisplayMessage($"\n Value doesn't exist. Nearest value is: {nearestValue}");
-                            } else {
-                                Visuals.DisplayMessage("\n Value was found here: " + linearResult);
+                                User.ShowAllFound(_array, nearestValue);
                             }
+                            
                         } catch (Exception e) {
                             Visuals.DisplayMessage("\n Only ints are allowed!");
                         }
@@ -417,12 +420,14 @@ namespace StockAnalyser
                             
                             int binaryResult = Search.BinarySearch(_array, userValue);
 
-                            if (binaryResult == -1)
+                            if (binaryResult != -1)
                             {
+                                Visuals.DisplayMessage("\n Value was found here: " + binaryResult);
+                                User.ShowAllFound(_array, binaryResult);
+                            } else if (binaryResult == -1) {
                                 int nearestValue = User.FindNearest(_array, userValue);
                                 Visuals.DisplayMessage($"\n Value doesn't exist. Nearest value is: {nearestValue}");
-                            } else {
-                                Visuals.DisplayMessage("\n Value was found here: " + binaryResult);
+                                User.ShowAllFound(_array, nearestValue);
                             }
                             
                             ConfirmationMessage();

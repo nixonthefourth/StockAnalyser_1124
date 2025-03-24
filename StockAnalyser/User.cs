@@ -72,5 +72,16 @@ namespace StockAnalyser
             
             return closest;
         }
+
+        public static void ShowAllFound(int[] array, int value)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] == value)
+                {
+                    Visuals.DisplayMessage($"\n Value {value} found in: {i}");
+                }
+            }
+        }
     }
 }
